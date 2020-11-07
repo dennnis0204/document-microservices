@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/button.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/input.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/message.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/table.min.css"
+      integrity="sha512-NtvxKmBWfr6sEZ3y/qV4DTXPEXpP/VZZV5BEaCFxUukf7/cyktgYpfsxs2ERvisbDXfnLJfswd2DYEj0h+qAFA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Api Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">PDF API</div>
+        <div class="menu-item">
+          <a href="/api"> Main API Page </a>
+        </div>
+        <div class="username" th:text="'Signed as ' + ${username}"></div>
+        <div class="logout">
+          <form action="/logout" method="get">
+            <button type="submit" class="ui massive button">Logout</button>
+          </form>
+        </div>
+      </header>
+      <main>
+        <div class="ui message" th:if="${allRecords.empty}">
+          You have no records!
+        </div>
+        <table class="ui celled table" th:if="${not allRecords.empty}">
+          <thead>
+            <tr>
+              <th>UUID</th>
+              <th>TimeStamp</th>
+              <th>File Name</th>
+              <th>File Hash</th>
+              <th>Result Directory</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="record: ${allRecords}">
+              <td data-label="UUID" th:text="${record.uuid}"></td>
+              <td
+                data-label="TimeStamp"
+                th:text="${#strings.substring(record.localDateTime, 0, 10) + ' ' + #strings.substring(record.localDateTime, 11, 19) }"
+              ></td>
+              <td data-label="File Name" th:text="${record.fileName}"></td>
+              <td
+                data-label="File Hash"
+                th:text="${#strings.substring(record.digestString,0,20)} + ..."
+              ></td>
+              <td data-label="Result Directory" th:text="${record.path}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>

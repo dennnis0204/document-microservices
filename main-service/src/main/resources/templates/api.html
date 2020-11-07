@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/button.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/input.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/message.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Api Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">PDF API</div>
+
+        <div class="menu-item">
+          <a href="/all-records"> All Your Records </a>
+        </div>
+        <div class="username" th:text="'Signed as ' + ${username}"></div>
+
+        <div class="logout">
+          <form action="/logout" method="get">
+            <button type="submit" class="ui massive button">Logout</button>
+          </form>
+        </div>
+      </header>
+      <main>
+        <div class="wrapper">
+          <form th:action="@{/api}" method="post">
+            <!-- Check certificate -->
+            <div class="ui warning message" th:if="${wrong_certificate}">
+              You entered wrong certificate path name, try again
+            </div>
+
+            <div class="ui fluid input u-margin-bottom-medium">
+              <input
+                type="text"
+                name="certificate"
+                th:value="${certificate}"
+                th:if="${certificate}"
+              />
+              <input
+                type="text"
+                name="certificate"
+                placeholder="Enter pathname to your certificate:  /home/computer/Desktop/yourcertificate.cer"
+                th:unless="${certificate}"
+              />
+            </div>
+
+            <!-- Check document -->
+            <div class="ui warning message" th:if="${wrong_document}">
+              You entered wrong file path name, try again
+            </div>
+
+            <!-- Check document size -->
+            <div class="ui warning message" th:if="${document_doesnt_exist}">
+              Document doesn't exist
+            </div>
+
+            <!-- Check document size -->
+            <div class="ui warning message" th:if="${wrong_document_size}">
+              Document size must be about 1-20 Mb
+            </div>
+
+            <div class="ui fluid input u-margin-bottom-medium">
+              <input
+                type="text"
+                name="document"
+                th:value="${document}"
+                th:if="${document}"
+              />
+              <input
+                type="text"
+                name="document"
+                placeholder="Enter pathname to your pdf document:  /home/computer/Desktop/yourfilename.pdf"
+                th:unless="${document}"
+              />
+            </div>
+
+            <!-- Check output path -->
+            <div class="ui warning message" th:if="${wrong_output_path}">
+              You entered wrong output directory path name, try again
+            </div>
+            <div class="ui fluid input u-margin-bottom-medium">
+              <input
+                type="text"
+                name="outputs"
+                th:value="${outputs}"
+                th:if="${outputs}"
+              />
+              <input
+                type="text"
+                name="outputs"
+                placeholder="Enter output directory pathname to processed pdf document:  /home/computer/Desktop/"
+                th:unless="${outputs}"
+              />
+            </div>
+
+            <div class="u-margin-top-medium">
+              <button
+                type="submit"
+                class="ui right floated massive button u-margin-top-medium"
+              >
+                Send to service
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>

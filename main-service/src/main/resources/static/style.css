@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.container {
+  margin: 1rem;
+}
+
+header {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding-left: 2rem;
+}
+
+.menu-item {
+  font-size: 2rem;
+  padding-left: 4rem;
+  flex-grow: 1;
+}
+
+.username {
+  font-size: 1.8rem;
+  padding-right: 2rem;
+}
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.wrapper {
+  max-width: 80rem;
+  margin: 2rem auto 2rem auto;
+}
+
+.ui.input > input::placeholder {
+  color: #000000;
+}
+
+.ui.input > input {
+  height: 5rem;
+}
+
+.u-margin-top-medium {
+  margin-top: 3rem;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 3rem;
+}
