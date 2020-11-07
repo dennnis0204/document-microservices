@@ -76,3 +76,7 @@ a:hover {
 .u-margin-bottom-medium {
   margin-bottom: 3rem;
 }
+
+.label {
+  padding-bottom: 1rem;
+}

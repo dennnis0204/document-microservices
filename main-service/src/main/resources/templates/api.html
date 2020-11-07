@@ -50,17 +50,15 @@
               You entered wrong certificate path name, try again
             </div>
 
+            <div class="label">
+              <label>Pathname to Your Certificate</label>
+            </div>
+
             <div class="ui fluid input u-margin-bottom-medium">
               <input
                 type="text"
                 name="certificate"
-                th:value="${certificate}"
-                th:if="${certificate}"
-              />
-              <input
-                type="text"
-                name="certificate"
-                placeholder="Enter pathname to your certificate:  /home/computer/Desktop/yourcertificate.cer"
+                placeholder="/home/computer/Desktop/yourcertificate.cer"
                 th:unless="${certificate}"
               />
             </div>
@@ -80,17 +78,17 @@
               Document size must be about 1-20 Mb
             </div>
 
+            <div class="label">
+              <label class="label"
+                >Pathnames to Your Pdf Documents Separated by Semicolons:
+              </label>
+            </div>
+
             <div class="ui fluid input u-margin-bottom-medium">
               <input
                 type="text"
                 name="document"
-                th:value="${document}"
-                th:if="${document}"
-              />
-              <input
-                type="text"
-                name="document"
-                placeholder="Enter pathname to your pdf document:  /home/computer/Desktop/yourfilename.pdf"
+                placeholder="/home/computer/Desktop/yourfilename.pdf"
                 th:unless="${document}"
               />
             </div>
@@ -99,17 +97,19 @@
             <div class="ui warning message" th:if="${wrong_output_path}">
               You entered wrong output directory path name, try again
             </div>
+
+            <div class="label">
+              <label class="label"
+                >Output Directory Pathname Where Processed Pdf Documents Should
+                Be Saved:
+              </label>
+            </div>
+
             <div class="ui fluid input u-margin-bottom-medium">
               <input
                 type="text"
                 name="outputs"
-                th:value="${outputs}"
-                th:if="${outputs}"
-              />
-              <input
-                type="text"
-                name="outputs"
-                placeholder="Enter output directory pathname to processed pdf document:  /home/computer/Desktop/"
+                placeholder="/home/computer/Desktop/"
                 th:unless="${outputs}"
               />
             </div>
