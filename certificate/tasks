@@ -1,0 +1,82 @@
+straznicykodu <straznicykodu@assecods.pl>
+	
+Drogi Kandydacie!
+
+Dziękujemy za rejestrację w konkursie.
+
+Poniżej przedstawiamy zadania, które musisz wykonać, aby zostać Strażnikiem Kodu i wygrać atrakcyjne nagrody.
+
+Treść zadań:
+
+Zadanie 1: Napisz aplikacje wykorzystując framework Spring, która udostępniać będzie metodę obsługującą na wejściu:
+•       certyfikat w dowolnym formacie,
+•       plik (pdf),
+•       miejsce, gdzie ma zostać zapisany edytowany dokument (output path)
+Typ zawartości dowolny, metoda może być dostępna poprzez AMQP lub http.
+
+Wymagania:
+1.Dostęp do API powinien być zabezpieczony
+2.Każda operacja powinna być logowana
+3.Aplikacja może obsługiwać dokumenty:
+- nie większe niż 20MB,
+- nie mniejsze niż 1MB,
+4.Walidacja danych wejściowych
+5.Aplikacja powinna zwracać odpowiedź w możliwe jak najkrótszym czasie
+
+
+Operacje:
+1.Zapis do bazy / typ bazy dowolny
+
+Utworzenie/Zapis rekordu do bazy z informacją o procesowanym dokumencie w tym:
+- uuid,
+- skrót dokumentu (dowolny alg, ważne, aby był bezkolizyjny i szybki),
+- data wystąpienia,
+- blob lub ścieżka do dokumentu na dysku,
+- jaki użytkownik wykonał daną operacje
+
+oraz dodatkowe pola, które okażą się pomocne na cele zadania.
+
+2.Edycja dokumentu
+Na dokumencie powinny znaleźć się informacje takie jak:
+- commonName[cert],
+- organization[cert],
+- skrót wyliczonego dokumentu,
+- uuid,
+
+Ważne jest, aby informacje te znalazły się:
+- na ostatniej stronie (może być nowo utworzona)
+- na dowolnej pozycji
+
+3.Zwrócenie informacji do klienta o zakończeniu zadania
+
+Zadanie 2: Dodaj możliwość pracy napisanej aplikacji w trybie HA
+
+Zadanie 3: Dodaj możliwość procesowania wielu dokumentów jednocześnie w ramach jednego żądania
+np.
+{
+ "cert": "xyz",
+ "files": [
+  "xyz1.pdf" : "path1",
+  "xyz2.pdf" : "path2"
+ ],
+ "out": "/mnt/files/out"
+}
+
+
+Wszystkie zadania tyczą się tego samego projektu 😊
+
+Będziemy brać pod uwagę:
+•       dojrzałość architektoniczną
+•       czystość kodu
+•       innowacyjność w doborze rozwiązań
+•       bezpieczeństwo oprogramowania
+•       czas wykonania zadania
+
+Swoje rozwiązania umieść na git i mailem zwrotnym przekaż nam link do wersji demo!
+
+Jesteś gotów?!
+Czekamy na Twoje rozwiązania!
+Już dziś możesz stać się Strażnikiem Kodu!
+
+
+Powodzenia
